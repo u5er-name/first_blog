@@ -1,0 +1,24 @@
+{% extends "open_blog/base.html" %}
+
+{% block page_header %}
+  <h3>{{ post.topic }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+
+  <ul>
+  {% for comment in comments %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <p><h4>— {{ comment.author }}</h4></p>
+        <p><h4>{{ comment.comment }}</h4></p>
+        <p><h4>{{ comment.date_added|date:'M d, Y H:i' }}<h4></p>
+      </div>
+    </div>
+  {% empty %}
+    <p><h4>Комментарии к этому посту отсутствуют.</h4></p>
+  {% endfor %}
+<p>
+    <a href="{% url 'open_blog:comment' pk=post.pk %}"><h4>Добавить комментарий</h4></a>
+</p>
+{% endblock content %}

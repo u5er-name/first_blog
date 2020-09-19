@@ -1,0 +1,9 @@
+{% extends "open_blog/base.html" %}
+
+{% block content %}
+<form action="{% url 'open_blog:comment' pk=post.pk %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Добавить комментарий</button>
+</form>
+{% endblock content %}

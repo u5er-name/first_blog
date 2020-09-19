@@ -1,0 +1,16 @@
+{% extends "open_blog/base.html" %}
+
+
+{% block content %}
+{% for post in posts %}
+    <h2><a href="{% url 'open_blog:post' pk=post.pk %}">{{ post.topic }}</a></h2>
+    <p></p>
+    <p><h3>{{ post.entry }}</h3></p>
+    <p></p>
+    <p><h3> — {{ post.author }}</h3></p>
+    <p><h3>{{ post.date_added|date:'M d, Y H:i' }}</h3></p>
+    <p></p>
+    <h2><a href="{% url 'open_blog:post' pk=post.pk %}">Комментарии</a></h2>
+    <br></br>
+{% endfor %}
+{% endblock content %}
