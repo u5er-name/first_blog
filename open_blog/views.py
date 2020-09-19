@@ -34,6 +34,27 @@ def new_post(request):
     context = {'form': form}
     return render(request, 'open_blog/new_post.html', context)
 
+def edit_post(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    if request.method != 'POST':
+        # Исходный запрос; форма заполняется данными текущей записи.
+        form = PostForm(instance=post)
+    else:
+        # Отправка данных POST; обработать данные.
+        form = PostForm(instance=post, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('open_blog:post', pk=pk)
+
+    context = {'post': post, 'form': form}
+    return render(request, 'open_blog/edit_post.html', context)
+
+def delete_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+    return redirect('open_blog:posts')
+
 def comment(request, pk):
     """Определяет комментарий пользователя"""
     post = Post.objects.get(pk=pk)

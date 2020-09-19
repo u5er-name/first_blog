@@ -1,0 +1,14 @@
+{% extends "open_blog/base.html" %}
+
+{% block content %}
+
+{% block page_header %}
+  <h3>{{ post.topic }}</h3>
+  <h3>{{ post.entry }}</h3>
+  <h3> — {{ post.author }}</h3>
+  <h3>{{ post.date_added|date:'M d, Y H:i' }}</h3>
+{% endblock page_header %}
+
+
+
+{% endblock content %}

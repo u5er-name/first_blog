@@ -14,4 +14,6 @@ urlpatterns = [
     path('new_post/', views.new_post, name='new_post'),
     # страница для добавления комментариев
     path('post/<int:pk>/comment/', views.comment, name='comment'),
+    path('post/<int:pk>/edit/', views.edit_post, name='edit_post'),
+    path('post/<int:pk>/delete/', views.delete_post, name='delete_post'),
 ]
